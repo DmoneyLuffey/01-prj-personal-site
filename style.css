@@ -1,1 +1,380 @@
-/* Add you CSS here */
+/* Make sizing easier to manage */
+* {
+  box-sizing: border-box;
+}
+
+/* Basic page look */
+body {
+  margin: 0;
+  font-family: 'Orbitron', Arial, sans-serif; /* Futuristic font */
+  /* New futuristic wall with glowing panels */
+  background:
+    linear-gradient(90deg, rgba(40, 70, 120, 0.35) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(40, 70, 120, 0.35) 1px, transparent 1px),
+    radial-gradient(circle at 20% 30%, rgba(80, 200, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(80, 200, 255, 0.14), transparent 28%),
+    #050a14; /* Base dark wall */
+  background-size: 140px 140px, 140px 140px, 320px 320px, 360px 360px, cover;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  color: #e8f1ff;
+  line-height: 1.6;
+  padding-top: 60px; /* Matches nav height */
+}
+
+/* Add space so content sits below fixed nav */
+
+/* Simple fixed navigation bar */
+.page-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  /* Solid background when at top */
+  background: rgba(15, 22, 36, 1);
+  border-bottom: 1px solid #37d7ff;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition: background 0.3s ease; /* Smooth background change */
+}
+
+/* When scrolled down, make nav slightly transparent */
+.page-nav.scrolled {
+  background: rgba(15, 22, 36, 0.6); /* Transparent background */
+  border-bottom: 1px solid #37d7ff;
+}
+
+.nav-container {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-nav a {
+  color: #e8f1ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.page-nav a:hover {
+  color: #37d7ff;
+}
+
+/* Keep content centered and narrow */
+.container {
+  width: 90%;
+  max-width: px;
+  margin: 0 auto;
+}
+
+/* Header and footer styling */
+.site-header,
+.site-footer {
+  text-align: center;
+  padding: 16px 0;
+  color: #b6c5e3;
+}
+
+.logo {
+  margin: 0;
+  letter-spacing: 2px; /* More sci-fi spacing */
+}
+
+.tagline {
+  margin: 4px 0 0 0;
+  color: #d1c489;
+}
+
+/* Reusable card with angled corners - no border */
+.card {
+  margin: 16px auto;
+  padding: 20px;
+  background: rgba(15, 22, 36, 0.8); /* Slightly transparent for layered effect */
+  border: none; /* Remove border */
+  border-radius: 8px;
+  /* Clip the top-right and bottom-left corners for a futuristic feel */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+  box-shadow: 0 0 15px rgba(55, 215, 255, 0.3), /* Cyan glow */
+              0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Keep non-hero cards narrower so they don't reach the edges */
+.card:not(.hero) {
+  max-width: 900px; /* Expanded from 800px */
+  width: 90%;
+}
+
+/* Hero section - restore background and use normal card shape */
+.hero {
+  text-align: center;
+  background: rgba(15, 22, 36, 0.8);
+  background-image: url('./img/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 12px;
+  clip-path: none;       /* No corner cuts */
+  border-radius: 8px;    /* Simple rounded corners */
+}
+
+/* Simple styling for the profile image in the hero */
+.hero-image {
+  width: 150px;             /* Slightly smaller so it takes less space */
+  height: 150px;
+  object-fit: cover;        /* Keeps the image nicely cropped */
+  border-radius: 50%;       /* Round avatar shape */
+  border: 2px solid #37d7ff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  margin-bottom: 12px;
+}
+
+/* Simple button */
+.button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 10px 18px;
+  background: #37d7ff;
+  color: #041024;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background: #61e3ff;
+}
+
+/* Skills as simple inline icons */
+.pill-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+}
+
+.pill-list li {
+  display: inline-block;
+  margin: 8px 12px 8px 0; /* Space between icons */
+  padding: 0; /* No padding needed */
+  background: none; /* No background */
+  border: none; /* No border */
+  color: #d6e8ff;
+}
+
+/* Style icons in skill list */
+.pill-list i {
+  margin-right: 0; /* No margin since text is gone */
+  color: #37d7ff; /* Make icons cyan */
+  font-size: 2rem; /* Larger icons */
+}
+
+/* Simple link lists */
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.link-list li {
+  margin-bottom: 8px;
+}
+
+.link-list a {
+  color: #7dd0ff;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.link-list a:hover {
+  text-decoration: underline;
+}
+
+/* Footer text color */
+.site-footer small {
+  color: #7a8fb5;
+}
+
+/* Social media icons styling */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.social-icons li {
+  margin: 0;
+}
+
+.social-icons a {
+  color: #7dd0ff;
+  font-size: 1.6rem; /* Larger icons */
+}
+
+.social-icons a:hover {
+  color: #37d7ff;
+}
+
+/* Contact section email icon styling */
+#contact a {
+  color: #7dd0ff;
+  font-size: 1.6rem; /* Same size as social icons */
+}
+
+#contact a:hover {
+  color: #37d7ff;
+}
+
+/* Persistent volume control in top right corner */
+.volume-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(15, 22, 36, 0.9);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #37d7ff;
+  z-index: 999;
+}
+
+.volume-control i {
+  color: #37d7ff;
+  font-size: 1.2rem;
+}
+
+/* Simple mute toggle button (persistent in bottom right) */
+.mute-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(15, 22, 36, 0.9);
+  border: 2px solid #37d7ff;
+  border-radius: 50%;
+  color: #37d7ff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: background 0.3s ease; /* Smooth background change */
+}
+
+.mute-toggle:hover {
+  background: rgba(55, 215, 255, 0.2);
+}
+
+/* Muted state styling */
+.mute-toggle.muted {
+  border-color: #888;
+  color: #888;
+}
+
+.mute-toggle.muted:hover {
+  background: rgba(136, 136, 136, 0.2);
+}
+
+/* Project section heading */
+#projects h4 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #dff6ff;
+  font-size: .9rem;
+}
+
+/* Embedded project preview iframe */
+.project-iframe {
+  width: 10%; /* Takes up full width of container */
+  height: 600px; /* Fixed height for viewing */
+  border: 2px solid #37d7ff;
+  border-radius: 8px;
+  margin: 16px 0; /* Space above and below */
+  background: #0f1624;
+}
+
+/* Projects grid - displays multiple project cards */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap; /* Wraps cards to next line if needed */
+  gap: 16px; /* Space between project cards */
+  margin-top: 16px;
+}
+
+/* Individual project card styling */
+.project-card {
+  flex: 0 1 calc(25% - 12px); /* Four cards per row */
+  min-width: 40px; /* Minimum card size */
+  min-height: 120px; /* Increased height for more content */
+  background: rgba(15, 22, 36, 0.6); /* Slightly darker background */
+  border: 1px solid #37d7ff;
+  border-radius: 6px;
+  padding: 12px; /* Adjusted padding */
+  text-align: center; /* Center all text inside the card */
+}
+
+/* Project card heading (title that links to project) */
+.project-card h4 {
+  margin: 0 0 8px 0; /* Space below title */
+  color: #dff6ff;
+  font-size: 0.95rem; /* Slightly smaller font */
+}
+
+/* Make project titles clickable links */
+.project-card h4 a {
+  color: #37d7ff;
+  text-decoration: none;
+}
+
+.project-card h4 a:hover {
+  text-decoration: underline;
+}
+
+/* Project card description text */
+.project-card p {
+  margin: 0; /* Remove margins */
+  font-size: 0.75rem; /* Smaller description text */
+  color: #c9defd;
+  line-height: 1.3; /* Tighter line spacing */
+}
+
+/* Skills wrapper - creates side-by-side layout */
+.skills-wrapper {
+  display: flex;
+  gap: 100px;
+  align-items: flex-start;
+  /* Image on left, skills on right */
+}
+
+/* Laptop image styling */
+.skills-image {
+  width: 300px;
+  height: auto;
+  max-height: 300px;
+  border-radius: 8px;
+  flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+/* Skills content on the right side */
+.skills-content {
+  flex: 1; /* Takes up remaining space */
+}
+
+.skills-content h3 {
+  margin-top: 0; /* Remove top margin from first heading */
+  margin-bottom: 12px; /* Space below heading */
+}

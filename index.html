@@ -1,11 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Basic page setup -->
   <meta charset="UTF-8">
-  <title>My Personal Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Futuristic Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Link to the simple stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Add your HTML content here -->
-</body>
+  <!-- Simple fixed navigation to jump to sections -->
+  <nav class="page-nav">
+    <div class="container nav-container">
+      <a href="#hero">Home</a>
+      <a href="#bio">Bio</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#social">Social</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero section - default card (no corner cuts) -->
+  <section class="card hero" id="hero">
+    <div class="container">
+      <!-- Profile image shown from the image folder -->
+      <img class="hero-image" src="img/Damani.jpg" alt="My profile photo"
+        onerror="this.src='https://via.placeholder.com/150?text=Photo';">
+      <h2>Damani Ward</h2>
+      <p class="tagline">Web Development Student</p>
+      <p>I am starting my web development journey and will share my projects as I learn HTML, CSS, and JavaScript.</p>
+    </div>
+  </section>
+
+  <!-- Bio section -->
+  <section class="card" id="bio">
+    <div class="container">
+      <h3>Bio</h3>
+      <p>Hello! I'm a college student learning web development. I work full time at Amazon in one of the logistics department. I've always loved anything and everything dealing with computers.</p>
+    </div>
+  </section>
+
+  <!-- Hobbies section -->
+  <section class="card" id="hobbies">
+    <div class="container">
+      <h3>Hobbies</h3>
+      <p>I enjoy gaming, building custom keyboards, building custom computers, hiking, and writing. I also make YouTube videos doing both gaming and skits! When I'm not doing these, I like to practice my coding skills.</p>
+    </div>
+  </section>
+
+  <!-- Skills section -->
+  <section class="card" id="skills">
+    <div class="container">
+      <!-- Skills content wrapper for side-by-side layout -->
+      <div class="skills-wrapper">
+        <!-- Laptop image on the left -->
+        <img class="skills-image" src="img/laptop.jpg" alt="Laptop with code">
+        
+        <!-- Skills content on the right -->
+        <div class="skills-content">
+          <h3>Skills (current)</h3>
+          <ul class="pill-list">
+            <li><i class="fas fa-square-c"></i></li>
+            <li><i class="fab fa-cuttlefish"></i></li>
+            <li><i class="fab fa-java"></i></li>
+            <li><i class="fab fa-python"></i></li>
+            <li><i class="fas fa-code"></i></li>
+          </ul>
+          <h3>Skills (in progress)</h3>
+          <ul class="pill-list">
+            <li><i class="fab fa-html5"></i></li>
+            <li><i class="fab fa-css3-alt"></i></li>
+            <li><i class="fab fa-js-square"></i></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects section -->
+  <section class="card" id="projects">
+    <div class="container">
+      <h3>Projects</h3>
+      
+      <!-- Projects grid container -->
+      <div class="projects-grid">
+        
+        <!-- Individual project card -->
+        <div class="project-card">
+          <h4><a href="https://dmoneyluffey.github.io/01-pet-fostering-cta/" target="_blank" rel="noreferrer">Pet Fostering CTA</a></h4>
+          <p>A Call-to-action website</p>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Social media section -->
+  <section class="card" id="social">
+    <div class="container">
+      <h3>Social Media</h3>
+      <ul class="link-list social-icons">
+        <li><a href="https://www.linkedin.com/in/damani-ward-21981b11a/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i></a></li>
+        <li><a href="https://github.com/DmoneyLuffey" target="_blank" rel="noreferrer"><i class="fab fa-github"></i></a></li>
+        <li><a href="https://x.com/xDeadGambitx" target="_blank" rel="noreferrer"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="https://www.youtube.com/@DeadGambit" target="_blank" rel="noreferrer"><i class="fab fa-youtube"></i></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact section -->
+  <section class="card" id="contact">
+    <div class="container">
+      <h3>Contact</h3>
+      <p><a href="mailto:dmonlive@yahoo.com"><i class="fas fa-envelope"></i></a></p>
+      <p>Feel free to reach out about projects, collaborations, or study sessions.</p>
+    </div>
+  </section>
+
+  <!-- Hidden background music player -->
+  <audio id="bg-music" src="audio/Young_Fire.mp3" type="audio/mpeg" loop playsinline>
+    <!-- Background music loops automatically -->
+  </audio>
+
+  <!-- Simple mute/unmute toggle button -->
+  <button id="mute-toggle" class="mute-toggle" title="Toggle music">
+    <i class="fas fa-volume-up"></i>
+  </button>
+
+  <!-- Footer with small note -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2026 Damani Ward Portfolio</small>
+    </div>
+  </footer>
+
+  <!-- Simple script: make nav transparent when scrolling down and control music -->
+  <script>
+    const nav = document.querySelector('.page-nav');
+    const music = document.getElementById('bg-music');
+    const muteToggle = document.getElementById('mute-toggle');
+    
+    // Navigation scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Set initial volume to 20%
+    if (music) {
+      music.volume = 0.2;
+    }
+    
+    // Toggle mute/unmute with button
+    if (muteToggle && music) {
+      muteToggle.addEventListener('click', () => {
+        if (music.volume > 0) {
+          // Mute the music
+          music.volume = 0;
+          muteToggle.classList.add('muted');
+          muteToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        } else {
+          // Unmute and set to 20%
+          music.volume = 0.2;
+          muteToggle.classList.remove('muted');
+          muteToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }
+      });
+    }
+
+    // Try to start music - browsers require user interaction first
+    const startMusic = () => {
+      if (music) {
+        music.muted = false;
+        const playPromise = music.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Music started successfully
+          }).catch(error => {
+            console.log('Autoplay prevented. Click anywhere to start music.');
+          });
+        }
+      }
+    };
+
+    // Try on page load
+    window.addEventListener('load', startMusic);
+
+    // Also try on first user click anywhere on the page
+    document.addEventListener('click', () => {
+      startMusic();
+      // Remove listener after first click
+      document.removeEventListener('click', startMusic);
+    }, { once: true });
+  </script>
+
+
+</html></body></body>
 </html>
