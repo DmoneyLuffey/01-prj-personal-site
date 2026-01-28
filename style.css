@@ -177,6 +177,14 @@ body {
   margin-right: 0; /* No margin since text is gone */
   color: #37d7ff; /* Make icons cyan */
   font-size: 2rem; /* Larger icons */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover animation */
+  cursor: pointer; /* Show it's interactive */
+}
+
+/* Hover effect for skill icons */
+.pill-list i:hover {
+  transform: scale(1.2); /* Make icon bigger on hover */
+  color: #61e3ff; /* Brighter cyan color on hover */
 }
 
 /* Simple link lists */
