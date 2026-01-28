@@ -176,15 +176,26 @@ body {
 .pill-list i {
   margin-right: 0; /* No margin since text is gone */
   color: #37d7ff; /* Make icons cyan */
-  font-size: 2rem; /* Larger icons */
+  font-size: 2.5rem; /* Bigger icons */
   transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover animation */
   cursor: pointer; /* Show it's interactive */
+}
+
+/* Set base color for devicon icons (C#, C++) */
+.pill-list i[class*="devicon"]::before {
+  color: #37d7ff; /* Make devicon icons cyan */
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
 /* Hover effect for skill icons */
 .pill-list i:hover {
   transform: scale(1.2); /* Make icon bigger on hover */
   color: #61e3ff; /* Brighter cyan color on hover */
+}
+
+/* Ensure devicon icons (C#, C++) also respond to hover */
+.pill-list i[class*="devicon"]:hover::before {
+  color: #61e3ff; /* Brighter cyan color on hover for devicon icons */
 }
 
 /* Simple link lists */
