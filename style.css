@@ -170,15 +170,18 @@ body {
   background: none; /* No background */
   border: none; /* No border */
   color: #d6e8ff;
+  text-align: center; /* Center text beneath icons */
 }
 
 /* Style icons in skill list */
 .pill-list i {
-  margin-right: 0; /* No margin since text is gone */
+  display: block; /* Put icon above text */
+  margin: 0 auto 4px auto; /* Center icon and add space below */
   color: #37d7ff; /* Make icons cyan */
-  font-size: 2.5rem; /* Bigger icons */
+  font-size: 3rem; /* Bigger icons */
   transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover animation */
   cursor: pointer; /* Show it's interactive */
+  pointer-events: auto; /* Make sure icons can receive pointer events */
 }
 
 /* Set base color for devicon icons (C#, C++) */
@@ -196,6 +199,14 @@ body {
 /* Ensure devicon icons (C#, C++) also respond to hover */
 .pill-list i[class*="devicon"]:hover::before {
   color: #61e3ff; /* Brighter cyan color on hover for devicon icons */
+}
+
+/* Style text labels beneath skill icons */
+.pill-list span {
+  display: block; /* Put text below icon */
+  font-size: 0.75rem; /* Small text */
+  color: #d6e8ff; /* Light color */
+  margin-top: 4px; /* Space between icon and text */
 }
 
 /* Simple link lists */
@@ -227,7 +238,7 @@ body {
 /* Social media icons styling */
 .social-icons {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -237,22 +248,22 @@ body {
 
 .social-icons a {
   color: #7dd0ff;
-  font-size: 1.6rem; /* Larger icons */
+  font-size: 3rem; /* Same size as skills icons */
+  text-decoration: none; /* Remove underline */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth hover animation */
+  display: inline-block; /* Needed for transform to work */
 }
 
 .social-icons a:hover {
   color: #37d7ff;
+  transform: scale(1.2); /* Make icon bigger on hover */
 }
 
-/* Contact section email icon styling */
-#contact a {
-  color: #7dd0ff;
-  font-size: 1.6rem; /* Same size as social icons */
+.social-icons i {
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth icon animation */
 }
 
-#contact a:hover {
-  color: #37d7ff;
-}
+
 
 /* Persistent volume control in top right corner */
 .volume-control {
@@ -339,28 +350,35 @@ body {
   flex: 0 1 calc(25% - 12px); /* Four cards per row */
   min-width: 40px; /* Minimum card size */
   min-height: 120px; /* Increased height for more content */
-  background: rgba(15, 22, 36, 0.6); /* Slightly darker background */
+  background: rgba(30, 45, 65, 0.9); /* Lighter background to contrast with container */
   border: 1px solid #37d7ff;
   border-radius: 6px;
   padding: 12px; /* Adjusted padding */
   text-align: center; /* Center all text inside the card */
+  text-decoration: none; /* Remove underline from link */
+  display: block; /* Make anchor behave like block element */
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease; /* Smooth hover animation */
+  cursor: pointer; /* Show it's interactive */
 }
 
-/* Project card heading (title that links to project) */
+/* Hover effect for project card */
+.project-card:hover {
+  transform: scale(1.05); /* Make card slightly bigger on hover */
+  border-color: #61e3ff; /* Brighter border on hover */
+  background: rgba(40, 60, 85, 1); /* Even lighter background on hover */
+}
+
+/* Project card heading (title) */
 .project-card h4 {
   margin: 0 0 8px 0; /* Space below title */
-  color: #dff6ff;
+  color: #37d7ff; /* Cyan color like other interactive elements */
   font-size: 0.95rem; /* Slightly smaller font */
+  transition: color 0.3s ease; /* Smooth color transition */
 }
 
-/* Make project titles clickable links */
-.project-card h4 a {
-  color: #37d7ff;
-  text-decoration: none;
-}
-
-.project-card h4 a:hover {
-  text-decoration: underline;
+/* Change title color on card hover */
+.project-card:hover h4 {
+  color: #61e3ff; /* Brighter cyan on hover */
 }
 
 /* Project card description text */
