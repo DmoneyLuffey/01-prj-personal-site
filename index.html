@@ -4,6 +4,7 @@
   <!-- Basic page setup -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Damani Ward Portfolio</title>
   <!-- Futuristic Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +29,8 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
+
+  <main>
 
   <!-- Hero section - default card (no corner cuts) -->
   <section class="card hero" id="hero">
@@ -92,9 +95,15 @@
       <div class="projects-grid">
         
         <!-- Individual project card -->
-        <a href="https://dmoneyluffey.github.io/01-pet-fostering-cta/" target="_blank" rel="noreferrer" class="project-card">
-          <h4>Pet Fostering CTA</h4>
-          <p>A Call-to-action website</p>
+        <a href="https://dmoneyluffey.github.io/charitywater-game-water-fall/" target="_blank" rel="noreferrer" class="project-card">
+          <h4>Charity: Water - Water Fall</h4>
+          <p>A game designed in collaboration with Charity: Water to help promote their goal.</p>
+        </a>
+
+        <!-- Individual project card -->
+        <a href="https://dmoneyluffey.github.io/07-nasa-space-explorer/" target="_blank" rel="noreferrer" class="project-card">
+          <h4>NASA Space Explorer</h4>
+          <p>Explores all of NASA's journeys and discoveries throughout the years.</p>
         </a>
         
       </div>
@@ -106,8 +115,8 @@
     <div class="container">
       <h3>Social Media</h3>
       <ul class="link-list social-icons">
-        <li><a href="https://x.com/xDeadGambitx" target="_blank" rel="noreferrer"><i class="fab fa-twitter"></i></a></li>
-        <li><a href="https://www.youtube.com/@DeadGambit" target="_blank" rel="noreferrer"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="https://x.com/xDeadGambitx" target="_blank" rel="noreferrer" aria-label="Visit my X profile"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.youtube.com/@DeadGambit" target="_blank" rel="noreferrer" aria-label="Visit my YouTube channel"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </section>
@@ -117,13 +126,14 @@
     <div class="container">
       <h3>Contact</h3>
       <ul class="link-list social-icons">
-        <li><a href="mailto:dmonlive@yahoo.com"><i class="fas fa-envelope"></i></a></li>
-        <li><a href="https://www.linkedin.com/in/damani-ward-21981b11a/" target="_blank" rel="noreferrer"><i class="fab fa-linkedin"></i></a></li>
-        <li><a href="https://github.com/DmoneyLuffey" target="_blank" rel="noreferrer"><i class="fab fa-github"></i></a></li>
+        <li><a href="mailto:dmonlive@yahoo.com" aria-label="Send me an email"><i class="fas fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/damani-ward-21981b11a/" target="_blank" rel="noreferrer" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a href="https://github.com/DmoneyLuffey" target="_blank" rel="noreferrer" aria-label="Visit my GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a></li>
       </ul>
       <p>Feel free to reach out about projects, collaborations, or study sessions.</p>
     </div>
   </section>
+  </main>
 
   <!-- Hidden background music player -->
   <audio id="bg-music" src="audio/Young_Fire.mp3" type="audio/mpeg" loop playsinline>
@@ -131,8 +141,8 @@
   </audio>
 
   <!-- Simple mute/unmute toggle button -->
-  <button id="mute-toggle" class="mute-toggle" title="Toggle music">
-    <i class="fas fa-volume-up"></i>
+  <button id="mute-toggle" class="mute-toggle" title="Toggle music" aria-label="Toggle background music">
+    <i class="fas fa-volume-up" aria-hidden="true"></i>
   </button>
 
   <!-- Footer with small note -->
@@ -142,69 +152,7 @@
     </div>
   </footer>
 
-  <!-- Simple script: make nav transparent when scrolling down and control music -->
-  <script>
-    const nav = document.querySelector('.page-nav');
-    const music = document.getElementById('bg-music');
-    const muteToggle = document.getElementById('mute-toggle');
-    
-    // Navigation scroll effect
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 0) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // Set initial volume to 20%
-    if (music) {
-      music.volume = 0.2;
-    }
-    
-    // Toggle mute/unmute with button
-    if (muteToggle && music) {
-      muteToggle.addEventListener('click', () => {
-        if (music.volume > 0) {
-          // Mute the music
-          music.volume = 0;
-          muteToggle.classList.add('muted');
-          muteToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
-        } else {
-          // Unmute and set to 20%
-          music.volume = 0.2;
-          muteToggle.classList.remove('muted');
-          muteToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-        }
-      });
-    }
-
-    // Try to start music - browsers require user interaction first
-    const startMusic = () => {
-      if (music) {
-        music.muted = false;
-        const playPromise = music.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            // Music started successfully
-          }).catch(error => {
-            console.log('Autoplay prevented. Click anywhere to start music.');
-          });
-        }
-      }
-    };
-
-    // Try on page load
-    window.addEventListener('load', startMusic);
-
-    // Also try on first user click anywhere on the page
-    document.addEventListener('click', () => {
-      startMusic();
-      // Remove listener after first click
-      document.removeEventListener('click', startMusic);
-    }, { once: true });
-  </script>
-
-
-</html></body></body>
+  <!-- External JavaScript file for site interactions -->
+  <script src="script.js"></script>
+</body>
 </html>
